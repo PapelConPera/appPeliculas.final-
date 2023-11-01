@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+<h1>{% block title %}Categorias{% endblock %}</h1>
+{% endblock %} 
+
+{% block content %}
+ {% for cat in Category %}
+<article class="Category">
+  <header>
+    <div>
+      <h1>{{ Category['titulo'] }}</h1>
+      <div class="about">{{ Category['lenguaje'] }}</div>
+    </div>
+    {% endfor %} {% endblock %}
+  </header>
+</article>

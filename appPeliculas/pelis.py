@@ -3,7 +3,7 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
-from movies.db import get_db
+from appPeliculas.db import get_db
 
 bp = Blueprint('pelis', __name__)
 
@@ -13,6 +13,8 @@ def index():
     pelis = db.execute(
         """SELECT l.name AS lenguaje, f.title AS titulo
            FROM language l JOIN film f ON l.language_id = f.language_id
-           ORDER BY name ASC"""
+           ORDER BY lenguaje ASC"""
+
+        """"""
     ).fetchall()
     return render_template('pelis/index.html', pelis=pelis)
