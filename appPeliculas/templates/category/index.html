@@ -7,12 +7,17 @@
 
 {% block content %}
  {% for cat in Category %}
-<article class="Category">
+<article class="post">
   <header>
     <div>
-      <h1>{{ Category['titulo'] }}</h1>
-      <div class="about">{{ Category['lenguaje'] }}</div>
+      <h1>{{ cat['Categorias'] }}</h1>
+      <div class="about"></div>
     </div>
-    {% endfor %} {% endblock %}
-  </header>
+</header>
+<p class = "body"></p>"
 </article>
+  {% if not loop.last %}
+  <hr>
+      {% endif%}
+   {% endfor %} 
+{% endblock %}
