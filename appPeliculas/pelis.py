@@ -15,6 +15,13 @@ def index():
            FROM language l JOIN film f ON l.language_id = f.language_id
            ORDER BY lenguaje ASC"""
 
-        """"""
     ).fetchall()
     return render_template('pelis/index.html', pelis=pelis)
+
+def get_pelicula(id):
+    pelicula = get_db().execute(
+        """SELECT *
+        FROM film
+        WHERE film_id = ?, 
+        (id,)"""
+    ).fetchone
