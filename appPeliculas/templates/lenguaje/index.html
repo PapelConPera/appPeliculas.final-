@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block header %}
+<h1>Lenguajes:</h1>
+{% endblock %} {% block content %} {% for lenguaje in lenguajes %}
+<article class="peliculas">
+  <header>
+    <div>
+      <h1>{{ lenguaje ['lenguaje'] }}</h1>
+    </div>
+  </header>
+</article>
+{% endfor %} {% endblock %}
