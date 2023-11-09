@@ -3,7 +3,7 @@ from flask import (
 )
 from werkzeug.exceptions import abort 
 
-from movies.db import get_db
+from appPeliculas.db import get_db
 
 bp = Blueprint('categorias', __name__url__prelix="/categorias/")
 
@@ -18,8 +18,10 @@ def index():
     ).fetchall()
     return render_template('categoria/index.html', categorias=categorias)
 
-@bp.route('/create', methods=(['GET']))
 
+
+
+@bp.route('/<int:id>/')
 def get_categoria(id):
     categoria = get_db().execute(
         """SELECT *
