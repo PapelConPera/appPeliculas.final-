@@ -6,7 +6,7 @@ from werkzeug.exceptions import abort
 from movies.db import get_db
 
 bp = Blueprint('actores', __name__url__prelix="/actor/")
-bpapi = Blueprint('actores', __name__url__prelix="api/actor/")
+bpapi = Blueprint('api_actores', __name__url__prelix="api/actor/")
 
 @bp. route('/')
 def index():
