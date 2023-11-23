@@ -1,12 +1,12 @@
 from flask import (
-    Blueprint, flask, g, redirect, render_template, request, url_for, jsonify
+    Blueprint, Flask, g, redirect, render_template, request, url_for, jsonify
 )
 from werkzeug.exceptions import abort 
 
-from movies.db import get_db
+from appPeliculas.db import get_db
 
-bp = Blueprint('actores', __name__url__prelix="/actor/")
-bpapi = Blueprint('api_actores', __name__url__prelix="api/actor/")
+bp = Blueprint('actores', __name__,url_prefix="/actor/")
+bpapi = Blueprint('api_actores', __name__,url_prefix="api/actor/")
 
 @bp. route('/')
 def index():
@@ -17,7 +17,6 @@ def index():
         ORDER BY first_name, last_name """
     ).fetchall()
     return render_template('actores/index.html', actores=actores)
-
 
 @bp.route('/<int:id>')
 def get_actor(id):

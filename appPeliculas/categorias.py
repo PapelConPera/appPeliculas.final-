@@ -1,12 +1,12 @@
 from flask import (
-    Blueprint, flask, g, redirect, render_template, request, url_for, jsonify
+    Blueprint, Flask, g, redirect, render_template, request, url_for, jsonify
 )
 from werkzeug.exceptions import abort 
 
 from appPeliculas.db import get_db
 
-bp = Blueprint('categorias', __name__url__prelix="/categorias/")
-bpapi = Blueprint('api_categorias', __name__url__prelix="api/categorias/")
+bp = Blueprint('categorias', __name__,url_prefix="/categorias/")
+bpapi = Blueprint('api_categorias', __name__,url_prefix="api/categorias/")
 
 @bp. route('/')
 def index():
