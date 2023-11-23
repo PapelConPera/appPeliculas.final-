@@ -20,6 +20,8 @@ def index():
     ).fetchall()
     return render_template('pelis/index.html', pelis=pelis)
 
+
+@bp.route('/<int:id>')
 def get_pelicula(id):
     pelicula = get_db().execute(
         """SELECT *
@@ -27,7 +29,15 @@ def get_pelicula(id):
         WHERE film_id = ?, 
         (id,)"""
     ).fetchone()
-    return pelicula
+
+    #modificar=
+    actor = get_db().execute(
+        """SELECT *
+        FROM actor
+        WHERE actor_id = ?,
+        (id,)"""
+    ).fetchone()
+    return render_template('pelis/detalle.html', pelicula=pelicula, actor = actor)
 
 @bpapi.route('/')
 def index_api():
