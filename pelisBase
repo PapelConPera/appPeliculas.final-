@@ -1,5 +1,5 @@
 BEGIN TRANSACTION;
-DROP TABLE IF EXISTS "actor";
+DROP  TABLEIF EXISTS "actor";
 CREATE TABLE IF NOT EXISTS "actor" (
 	"actor_id"	numeric NOT NULL,
 	"first_name"	VARCHAR(45) NOT NULL,

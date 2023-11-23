@@ -31,7 +31,6 @@ def get_categoria(id):
         WHERE category_id = ?,
         (id,)"""
     ).fetchone()
-    return categoria
 
 
 @bpapi. route('/')

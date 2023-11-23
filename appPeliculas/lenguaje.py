@@ -29,7 +29,6 @@ def get_lenguaje(id):
         WHERE languaje_id = ?,
         (id,)"""
     ).fetchone()
-    return lenguaje
 
 
 @bpapi.route('/')
