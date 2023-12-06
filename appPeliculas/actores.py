@@ -5,38 +5,37 @@ from werkzeug.exceptions import abort
 
 from appPeliculas.db import get_db
 
-bp = Blueprint('actores', __name__,url_prefix="/actor/")
-bpapi = Blueprint('api_actores', __name__,url_prefix="api/actor/")
+bp = Blueprint('actores', __name__,url_prefix="/actores/")
+bpapi = Blueprint('api_actores', __name__,url_prefix="api/actores/")
 
-@bp. route('/')
+@bp.route('/')
 def index():
     db = get_db()
-    actores= db.execute(
-        """SELECT *
-        FROM actor
-        ORDER BY first_name, last_name """
+    actores = db.execute(
+        """SELECT first_name , last_name 
+           FROM actor
+           ORDER BY first_name, last_name ASC"""
     ).fetchall()
-    return render_template('actores/index.html', actores=actores)
+    return render_template('actor/index.html', actor=actores)
 
 @bp.route('/<int:id>')
-def get_actor(id):
-    actor = get_db().execute(
-        """SELECT *
-        FROM actor
-        WHERE actor_id = ?,
-        (id,)"""
+def detalle(id):
+    actores = get_db().execute(
+        """SELECT first_name, last_name 
+           FROM actor 
+           ORDER BY first_name, last_name ASC;
+        """,(id,)
     ).fetchone()
     
-    #modificar=
     pelis = get_db().execute(
         """SELECT *
-        FROM pelis
-        WHERE actor_id = ?,
-        (id,)"""
+        FROM film
+        WHERE actor_id = ?
+        """,(id,)
     ).fetchone()
-    return render_template('actores/detalle.html', actor=actor, pelis = pelis)
+    return render_template('actores/detalle.html', actor=actores, pelis = pelis)
 
-
+#-----------------------------------------json--------------------------------------------------------
 @bpapi. route('/')
 def index_api():
     db = get_db()

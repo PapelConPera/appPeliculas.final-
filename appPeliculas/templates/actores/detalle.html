@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>:actores</h1>
+{% endblock %} 
+
+{% block content %}
+
+<h1>{{ actores['Nombre'] }}, {{actores ['Apellido']}}</h1>
+{% for cat in actores %}
+<article class="peliculas">
+  <header>
+    <div>
+      <h1>{{ actores['Nombre'] }}, {{actores ['Apellido']}}</h1>
+    </div>
+</header>
+</article>
+{% endfor %} 
+{% endblock %}
+
