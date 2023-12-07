@@ -16,7 +16,7 @@ def index():
            FROM actor
            ORDER BY first_name, last_name ASC"""
     ).fetchall()
-    return render_template('actor/index.html', actor=actores)
+    return render_template('actores/index.html', actor=actores)
 
 @bp.route('/<int:id>')
 def detalle(id):

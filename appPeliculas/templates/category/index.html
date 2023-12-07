@@ -6,11 +6,11 @@
 {% endblock %} 
 
 {% block content %}
- {% for categora in Categorias %}
+ {% for categoria in categorias %}
 <article class="peliculas">
   <header>
     <div>
-      <h1>{{ categoria['categoria'] }}</h1>
+      <h4>{{ categoria['categoria'] }} ({{categoria['Peliculas']}})</h4>
     </div>
 </header>
 </article>

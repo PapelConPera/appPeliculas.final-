@@ -12,12 +12,13 @@ bpapi = Blueprint('api_categorias', __name__,url_prefix="api/categorias/")
 def index():
     db = get_db()
     categorias = db.execute(
-        """SELECT c.name AS categoria, title AS Pelicula
-        FROM category c JOIN film_category fc ON c.category_id = fc.categoria
+        """SELECT c.name AS categoria, count(title) AS Peliculas
+        FROM category c JOIN film_category fc ON c.category_id = fc.category_id
         JOIN film f ON fc.film_id = f.film_id
-        ORDER BY Pelicula ASC"""
+        GROUP BY fc.category_id
+        ORDER BY categoria ASC"""
     ).fetchall()
-    return render_template('categoria/index.html', categorias=categorias)
+    return render_template('category/index.html', categorias=categorias)
 
 
 

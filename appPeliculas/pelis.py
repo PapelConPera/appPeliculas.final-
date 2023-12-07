@@ -12,10 +12,9 @@ bpapi = Blueprint('api_pelis', __name__, url_prefix='api/pelis/')
 def index():
     db = get_db()
     pelis = db.execute(
-        """SELECT title AS Peliculas, first_name AS Nombre, last_name AS Apellidos 
-           FROM actor a JOIN film_actor fa ON a.actor_id = fa.actor_id
-           JOIN film f ON fa.film_id = f.film_id
-           ORDER BY Peliculas ASC"""
+        """SELECT title AS titulo
+        FROM actor 
+        ORDER BY Peliculas ASC"""
 
     ).fetchall()
     return render_template('pelis/index.html', pelis=pelis)
